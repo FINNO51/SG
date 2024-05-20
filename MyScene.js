@@ -577,6 +577,9 @@ class MyScene extends THREE.Scene {
   
 
   update () {
+   this.delta += this.clock.getDelta();
+   
+      if (this.delta  > this.interval) {
     
     if (this.contador == 0){
       var aux = this.velocidad*(210.15+ THREE.MathUtils.randFloat(0.2, 0.6));
@@ -803,14 +806,13 @@ class MyScene extends THREE.Scene {
     // Literalmente le decimos al navegador: "La próxima vez que haya que refrescar la pantalla, llama al método que te indico".
     // Si no existiera esta línea,  update()  se ejecutaría solo la primera vez.
    
-     this.delta += this.clock.getDelta();
-   
-      if (this.delta  > this.interval) {
+     
           // The draw or time dependent code are here
           this.delta = this.delta % this.interval;
           this.renderer.render (this, this.getCamera());
-          requestAnimationFrame(() => this.update());
+          
       }
+   requestAnimationFrame(() => this.update());
   }
 
   movimiento(){
