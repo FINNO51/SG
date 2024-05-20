@@ -797,8 +797,9 @@ class MyScene extends THREE.Scene {
     // Este método debe ser llamado cada vez que queramos visualizar la escena de nuevo.
     // Literalmente le decimos al navegador: "La próxima vez que haya que refrescar la pantalla, llama al método que te indico".
     // Si no existiera esta línea,  update()  se ejecutaría solo la primera vez.
-    setTimeout(function(){ 
-    requestAnimationFrame(() => this.update());
+   var that = this; 
+   setTimeout(function(){ 
+    requestAnimationFrame(() => that.update());
    },1000/60);
   }
 
