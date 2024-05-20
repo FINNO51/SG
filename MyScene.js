@@ -802,14 +802,14 @@ class MyScene extends THREE.Scene {
     // Este método debe ser llamado cada vez que queramos visualizar la escena de nuevo.
     // Literalmente le decimos al navegador: "La próxima vez que haya que refrescar la pantalla, llama al método que te indico".
     // Si no existiera esta línea,  update()  se ejecutaría solo la primera vez.
-   requestAnimationFrame(() => this.update());
+   
      this.delta += this.clock.getDelta();
    
       if (this.delta  > this.interval) {
           // The draw or time dependent code are here
-          this.renderer.render (this, this.getCamera());
-   
           this.delta = this.delta % this.interval;
+          this.renderer.render (this, this.getCamera());
+          requestAnimationFrame(() => this.update());
       }
   }
 
